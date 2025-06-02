@@ -1,7 +1,7 @@
 # Portfolio
 I designed my own portfolio to showcase my design and web development abilities in one single place. I also decided to craft my own webpage in order to include all the features I personally required, nothing more and nothing less, as well as show a bit of my own personality. 
 
-👉 [Live website](https://franciscocasillas.github.io/portfolio/)
+👉 [Live website](https://franciscoxcode.github.io/portfolio/index.html)
 
 ## Screenshots
 <img width="1440" alt="Screen Shot 2022-04-29 at 14 17 51" src="https://user-images.githubusercontent.com/17735860/166039056-2272a24a-aad7-43a4-b1a3-2699e3215def.png">
