@@ -1,5 +1,5 @@
 # Portfolio
-I designed my own portfolio to showcase my design and web development abilities in one single place. I also decided to craft my own webpage in order to include all the features I personally required, nothing more and nothing less, as well as show a bit of my own personality. 
+I designed my own portfolio to showcase my design and iOS development abilities in one single place. I also decided to craft my own webpage in order to include all the features I personally required, nothing more and nothing less, as well as show a bit of my own personality. 
 
 👉 [Live website](https://franciscoxcode.github.io/portfolio/index.html)
 
