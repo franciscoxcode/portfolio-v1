@@ -1,19 +1,42 @@
 const projects = [
     {
-        title: "Wicked",
-        date: "March 7, 2022",
+        title: "Tasky Crush",
+        date: "December 15, 2025",
         images: [
             {
-                src: "Projects/Wicked/Home Screenshot.png",
+                src: "Projects/Tasky Crush/tasky01.png",
+                alt: "Tasky Crush Home Page"
+            },
+            {
+                src: "Projects/Tasky Crush/tasky02.png",
+                alt: "Tasky Crush Add Task"
+            },
+            {
+                src: "Projects/Tasky Crush/tasky03.png",
+                alt: "Tasky Crush Edit Task"
+            }
+        ],
+        githubUrl: "https://github.com/franciscoxcode/TaskyCrush",
+        appStoreUrl: "",
+        description:
+            "Tasky Crush is a SwiftUI productivity companion that organizes your to-dos into project “stories” and day filters while handing out shiny coin points whenever you clear a task.",
+        tags: "#swift #swiftui #ios"
+    },
+    {
+        title: "Wicked",
+        date: "March 7, 2024",
+        images: [
+            {
+                src: "Projects/Wicked/wicked01.png",
                 alt: "Wicked Home Page"
             },
             {
-                src: "Projects/Wicked/Home Screenshot.png",
-                alt: "Wicked Home Page"
+                src: "Projects/Wicked/wicked02.png",
+                alt: "Make your cake"
             },
             {
-                src: "Projects/Wicked/Home Screenshot.png",
-                alt: "Wicked Home Page"
+                src: "Projects/Wicked/wicked03.png",
+                alt: "Pay your cake"
             }
         ],
         githubUrl: "https://github.com/franciscoxcode/wicked",
@@ -24,6 +47,59 @@ const projects = [
     }
 ];
 
+function buildProjectActions(project, assetPrefix) {
+    const links = [
+        {
+            url: project.githubUrl,
+            icon: "github.png",
+            label: "GitHub Repository"
+        },
+        {
+            url: project.liveUrl,
+            icon: "eye.png",
+            label: "Live Site"
+        },
+        {
+            url: project.appStoreUrl,
+            icon: "link.png",
+            label: "App Store"
+        },
+        {
+            url: project.videoUrl,
+            icon: "eye.png",
+            label: "Demo Video"
+        },
+        {
+            url: project.caseStudyUrl,
+            icon: "link.png",
+            label: "Case Study"
+        }
+    ].filter((link) => Boolean(link.url));
+
+    return links
+        .map(
+            (link) => `
+                <li>
+                    <a href="${link.url}" target="_blank" rel="noreferrer">
+                        <img src="${assetPrefix}Icons/${link.icon}" alt="${link.label}">
+                    </a>
+                </li>
+            `
+        )
+        .join("");
+}
+
+function getPrimaryProjectUrl(project) {
+    return (
+        project.liveUrl ||
+        project.appStoreUrl ||
+        project.videoUrl ||
+        project.caseStudyUrl ||
+        project.githubUrl ||
+        ""
+    );
+}
+
 function buildProjectCarousel(project, assetPrefix, projectIndex) {
     const images = project.images || [];
 
@@ -32,7 +108,7 @@ function buildProjectCarousel(project, assetPrefix, projectIndex) {
     }
 
     return `
-        <div class="projectCarousel" data-carousel data-interval="3200">
+        <div class="projectCarousel" data-carousel>
             <div class="projectCarouselTrack">
                 <button
                     class="projectCarouselArrow projectCarouselArrowLeft"
@@ -85,24 +161,28 @@ function buildProjectCarousel(project, assetPrefix, projectIndex) {
 }
 
 function buildProjectCard(project, assetPrefix) {
+    const projectActions = buildProjectActions(project, assetPrefix);
+    const primaryUrl = getPrimaryProjectUrl(project);
+    const descriptionTagOpen = primaryUrl
+        ? `<a class="color1" target="_blank" rel="noreferrer" href="${primaryUrl}">`
+        : `<div class="color1">`;
+    const descriptionTagClose = primaryUrl ? "</a>" : "</div>";
+
     return `
         <section class="singleProject">
             ${buildProjectCarousel(project, assetPrefix, projects.indexOf(project))}
             <section class="projectLinks">
                 <time>${project.date}</time>
                 <nav>
-                    <ul class="projectIcons">
-                        <li><a href="${project.githubUrl}" target="_blank" rel="noreferrer"><img src="${assetPrefix}Icons/github.png" alt="GitHub Repository"></a></li>
-                        <li><a href="${project.liveUrl}" target="_blank" rel="noreferrer"><img src="${assetPrefix}Icons/eye.png" alt="Watch Live Site"></a></li>
-                    </ul>
+                    <ul class="projectIcons">${projectActions}</ul>
                 </nav>
             </section>
             <section class="projectDescription">
-                <a class="color1" target="_blank" rel="noreferrer" href="${project.liveUrl}">
+                ${descriptionTagOpen}
                     <h2 class="color3">${project.title}</h2>
                     <p>${project.description}</p>
                     <span>${project.tags}</span>
-                </a>
+                ${descriptionTagClose}
             </section>
         </section>
     `;
@@ -121,33 +201,6 @@ function showCarouselSlide(carousel, nextIndex) {
     });
 
     carousel.dataset.activeIndex = String(nextIndex);
-}
-
-function startCarousel(carousel) {
-    const slides = carousel.querySelectorAll("[data-slide]");
-
-    if (slides.length < 2 || carousel.dataset.timerId) {
-        return;
-    }
-
-    const interval = Number(carousel.dataset.interval || 3200);
-    const timerId = window.setInterval(() => {
-        const currentIndex = Number(carousel.dataset.activeIndex || 0);
-        const nextIndex = (currentIndex + 1) % slides.length;
-
-        showCarouselSlide(carousel, nextIndex);
-    }, interval);
-
-    carousel.dataset.timerId = String(timerId);
-}
-
-function stopCarousel(carousel) {
-    if (!carousel.dataset.timerId) {
-        return;
-    }
-
-    window.clearInterval(Number(carousel.dataset.timerId));
-    delete carousel.dataset.timerId;
 }
 
 function initCarousels(container) {
@@ -182,32 +235,7 @@ function initCarousels(container) {
                 showCarouselSlide(carousel, nextIndex);
             });
         }
-
-        carousel.addEventListener("mouseenter", () => stopCarousel(carousel));
-        carousel.addEventListener("mouseleave", () => startCarousel(carousel));
     });
-
-    if (!("IntersectionObserver" in window)) {
-        carousels.forEach((carousel) => startCarousel(carousel));
-        return;
-    }
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    startCarousel(entry.target);
-                } else {
-                    stopCarousel(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.45
-        }
-    );
-
-    carousels.forEach((carousel) => observer.observe(carousel));
 }
 
 function renderProjects(containerId, assetPrefix) {
