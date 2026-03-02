@@ -1,7 +1,7 @@
 # Portfolio
 I designed my own portfolio to showcase my design and iOS development abilities in one single place. I also decided to craft my own webpage in order to include all the features I personally required, nothing more and nothing less, as well as show a bit of my own personality. 
 
-👉 [Live website](https://franciscoxcode.github.io/portfolio/index.html)
+👉 [Live website]([https://franciscoxcode.github.io/portfolio/index.html](https://franciscoxcode.github.io/portfolio-v1/index.html))
 
 ## Screenshots
 <img width="1440" alt="Screen Shot 2022-04-29 at 14 17 51" src="Assets/portfolio3.png">
