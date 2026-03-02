@@ -367,8 +367,8 @@ ul img {
     right: 14px;
 }
 
-.projectCarousel:hover .projectCarouselArrow,
-.projectCarousel:focus-within .projectCarouselArrow {
+.projectCarouselTrack:hover .projectCarouselArrow,
+.projectCarouselTrack:focus-within .projectCarouselArrow {
     opacity: 1;
     visibility: visible;
 }
