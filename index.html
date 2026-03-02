@@ -9,48 +9,63 @@
     <title>Francisco Casillas</title>
 </head>
 
-<body class="yellow">
-    <header>
-        <nav>
-            <a class="color2 homeButton small" href="index.html">FC</a>
-        </nav>
-        <ul class="icons">
-            <li>
-                <a href="https://github.com/franciscoxcode" target="_blank"><img src="Icons/github.png"
-                        alt="Github Profile"></a>
-            </li>
-            <li>
-                <a href="https://www.linkedin.com/in/franciscoxcode/" target="_blank"><img src="Icons/linkedin.png"
-                        alt="LinkedIn Profile"></a>
-            </li>
-            <li>
-                <a href="https://x.com/franciscoxcode" target="_blank"><img src="Icons/twitter.png"
-                        alt="Twitter Profile"></a>
-            </li>
-            <li>
-                <a href="mailto:fxcasillas.dev@gmail.com" target="_blank"><img src="Icons/mail.png" alt="E-mail Me"></a>
-            </li>
-        </ul>
-    </header>
-    <main class="mainHome">
-        <section class="leftie half">
-            <section class="heroText">
-                <span class="color2 lessSmall">Software Engineer | iOS Developer</span>
-                <span class="color2 huge">Francisco</span>
-                <span class="color2 huge">Casillas</span>
-                <span class="color1 medium bottomText">I design</span>
-                <span class="color1 medium">iOS applications.</span>
+<body>
+    <section class="heroPanel yellow">
+        <header>
+            <nav>
+                <a class="color2 homeButton small" href="index.html">FC</a>
+            </nav>
+            <ul class="icons">
+                <li>
+                    <a href="https://github.com/franciscoxcode" target="_blank"><img src="Icons/github.png"
+                            alt="Github Profile"></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/franciscoxcode/" target="_blank"><img src="Icons/linkedin.png"
+                            alt="LinkedIn Profile"></a>
+                </li>
+                <li>
+                    <a href="https://x.com/franciscoxcode" target="_blank"><img src="Icons/twitter.png"
+                            alt="Twitter Profile"></a>
+                </li>
+                <li>
+                    <a href="mailto:fxcasillas.dev@gmail.com" target="_blank"><img src="Icons/mail.png" alt="E-mail Me"></a>
+                </li>
+            </ul>
+        </header>
+        <main class="mainHome">
+            <section class="leftie half">
+                <section class="heroText">
+                    <span class="color2 lessSmall">Software Engineer | iOS Developer</span>
+                    <span class="color2 huge">Francisco</span>
+                    <span class="color2 huge">Casillas</span>
+                    <span class="color1 medium bottomText">I design websites</span>
+                    <span class="color1 medium">& iOS applications.</span>
+                </section>
+                <section class="mainButtons">
+                    <a class="buttons topButton" href="Pages/projects.html"><span
+                            class="button1 small upperCase color1 bold">Projects</span></a>
+                    <a class="buttons" href="Pages/resume.html"><span
+                            class="color1 bold upperCase small button2">Resume</span></a>
+                </section>
             </section>
-            <section class="mainButtons">
-                <a class="buttons topButton" href="Pages/projects.html"><span
-                        class="button1 small upperCase color1 bold">Projects</span></a>
-                <a class="buttons" href="Pages/resume.html"><span
-                        class="color1 bold upperCase small button2">Resume</span></a>
-            </section>
-        </section>
+        </main>
+        <a class="scrollCue" href="#projects-home" aria-label="Scroll to projects">
+            <span class="scrollCueText">Projects</span>
+            <span class="scrollCueArrow"></span>
+        </a>
+    </section>
 
-    </main>
-
+    <section class="projectSection" id="projects-home">
+        <div class="projectSectionInner">
+          
+            <div id="projects-list-home"></div>
+        </div>
+    </section>
+    <script src="scripts/projects.js"></script>
+    <script>
+        renderProjects("projects-list-home", "");
+    </script>
 </body>
 
 </html>

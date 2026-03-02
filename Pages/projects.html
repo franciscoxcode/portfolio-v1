@@ -13,28 +13,22 @@
     <header>
         <nav>
             <a class="color2 homeButton small" href="../index.html">FC</a>
-            <!-- Calendly link widget begin -->
-            <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-            <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-            <a class="color1 upperCase small" href=""
-                onclick="Calendly.initPopupWidget({url: 'https://calendly.com/franciscocasillas/30min'});return false;">Contact</a>
-            <!-- Calendly link widget end -->
         </nav>
         <ul class="icons">
             <li>
-                <a href="https://github.com/franciscocasillas" target="_blank"><img src="../Icons/github.png"
+                <a href="https://github.com/franciscoxcode" target="_blank"><img src="../Icons/github.png"
                         alt="Github Profile"></a>
             </li>
             <li>
-                <a href="https://www.linkedin.com/in/chiccasillas/" target="_blank"><img src="../Icons/linkedin.png"
+                <a href="https://www.linkedin.com/in/franciscoxcode/" target="_blank"><img src="../Icons/linkedin.png"
                         alt="LinkedIn Profile"></a>
             </li>
             <li>
-                <a href="https://twitter.com/chiccasillas" target="_blank"><img src="../Icons/twitter.png"
+                <a href="https://twitter.com/franciscoxcode" target="_blank"><img src="../Icons/twitter.png"
                         alt="Twitter Profile"></a>
             </li>
             <li>
-                <a href="mailto:chiccasillas@gmail.com"><img src="../Icons/mail.png" alt="E-mail Me"></a>
+                <a href="mailto:fxcasillas.dev@gmail.com"><img src="../Icons/mail.png" alt="E-mail Me"></a>
             </li>
         </ul>
     </header>
@@ -42,30 +36,11 @@
         <a class="upperCase notTooSmall color3 underlined" href="../Pages/resume.html">Resume</a>
         <span class="upperCase notTooSmall color1">| Projects</span>
     </nav>
-    <section class="singleProject">
-        <img class="projectImgs" src="../Projects/Wicked/Home Screenshot.png" alt="Wicked Home Page">
-        <section class="projectLinks">
-            <time>March 7, 2022</time>
-            <nav>
-                <ul class="projectIcons">
-                    <li><a href="https://github.com/franciscocasillas/wicked" target="_blank"><img
-                        src="../Icons/github.png" alt="GitHub Repository"></a></li>
-                    <li><a href="https://franciscocasillas.github.io/wicked/" target="_blank"><img src="../Icons/eye.png" alt="Watch Live Site"></a></li>
-                </ul>
-            </nav>
-        </section>
-        <section class="projectDescription">
-            <a class="color1" target="_blank" href="https://franciscocasillas.github.io/wicked/">
-                <h2 class="color3">Wicked</h2>
-                <p>Website for a cake shop where you can customize your order by choosing your prefered bread, layering
-                    and
-                    toppings.</p>
-                <span>
-                    #html5 #css3 #javascript
-                </span>
-            </a>
-        </section>
-    </section>
+    <div id="projects-list-page"></div>
+    <script src="../scripts/projects.js"></script>
+    <script>
+        renderProjects("projects-list-page", "../");
+    </script>
 </body>
 
 </html>
