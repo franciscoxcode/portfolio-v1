@@ -105,7 +105,7 @@ li {
 .huge {
     font-size: clamp(5.2em, 10vw + 1em, 12.5em);
     font-weight: 900;
-    line-height: 0.88;
+    line-height: 0.8;
     margin-left: -0.04em;
     overflow-wrap: anywhere;
 }
@@ -305,9 +305,102 @@ ul img {
     color: rgb(38, 38, 38);
 }
 
-.projectImgs {
+.projectCarousel {
     width: 50%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.projectCarouselTrack {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.projectSlide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    margin: 0;
+}
+
+.projectSlide.is-active {
+    opacity: 1;
+}
+
+.projectImgs {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.projectCarouselArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background-color: rgba(38, 38, 38, 0.72);
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    line-height: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.projectCarouselArrowLeft {
+    left: 14px;
+}
+
+.projectCarouselArrowRight {
+    right: 14px;
+}
+
+.projectCarousel:hover .projectCarouselArrow,
+.projectCarousel:focus-within .projectCarouselArrow {
+    opacity: 1;
+    visibility: visible;
+}
+
+.projectCarouselArrow span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    transform: translateY(-1px);
+}
+
+.projectCarouselDots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 14px;
+}
+
+.projectCarouselDot {
+    width: 10px;
+    height: 10px;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    background-color: rgba(38, 38, 38, 0.25);
+    cursor: pointer;
+}
+
+.projectCarouselDot.is-active {
+    background-color: rgb(243, 211, 67);
 }
 
 .projectLinks {
@@ -328,7 +421,7 @@ ul img {
     font-size: 1.2em;
 }
 
-#projects-list-home .projectImgs {
+#projects-list-home .projectCarousel {
     width: 70%;
 }
 
@@ -480,10 +573,8 @@ MEDIA QUERY
         gap: 48px;
     }
 
-    .projectImgs {
+    .projectCarousel {
         width: 75%;
-        padding: 20px;
-        margin-bottom: 0px;
     }
 
     .projectLinks {
@@ -549,9 +640,8 @@ MEDIA QUERY
         max-width: 100%;
     }
 
-    .projectImgs {
+    .projectCarousel {
         width: 100%;
-        padding: 20px;
     }
 
     .projectLinks {
@@ -574,7 +664,7 @@ MEDIA QUERY
         margin-left: 10%;
     }
 
-    #projects-list-home .projectImgs {
+    #projects-list-home .projectCarousel {
         width: 94%;
     }
 
